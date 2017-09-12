@@ -12,6 +12,6 @@ public class HelloHealthCheck implements HealthIndicator {
 
     @Override
     public Health health() {
-        return Health.up().status("We're cool and the gang!").build();
+        return Health.up().withDetail("message", "We're cool and the gang!").build();
     }
 }
