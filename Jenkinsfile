@@ -5,10 +5,10 @@ pipeline {
         jdk 'JDK8'
     }
     environment {
-        CF_CREDS     = credentials('pcf')
+        CF_CREDS = credentials('pcf')
     }
     stages {
-        stage ('Initialize') {
+        stage('Initialize') {
             steps {
                 sh '''
                     mvn -v
@@ -16,7 +16,7 @@ pipeline {
             }
         }
 
-        stage ('Build') {
+        stage('Build') {
             steps {
                 sh 'mvn clean install'
             }
