@@ -21,7 +21,7 @@ pipeline {
                 sh 'mvn clean install'
             }
             post {
-                success {
+                always {
                     junit '**/target/surefire-reports/**/*.xml'
                 }
             }
