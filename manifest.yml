@@ -4,4 +4,4 @@ applications:
   instances: 1
   buildpack: java_buildpack
   domain: cfapps.io
-  path: target/*.jar
+  path: target/pcf-hello*.jar
