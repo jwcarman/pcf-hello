@@ -33,12 +33,11 @@
                 <org>microbule</org>
                 <space>development</space>
                 <buildpack>java_buildpack</buildpack>
-                <username>jwcarman@gmail.com</username>
                 <server>pivotal-cloud-foundry</server>
                 <target>https://api.run.pivotal.io</target>
                 <space>development</space>
                 <appname>pcf-hello</appname>
-                <url>pcf-hello.cfapps.io</url>
+                <url>cfapps.io</url>
                 <memory>1024</memory>
                 <instances>1</instances>
             </configuration>

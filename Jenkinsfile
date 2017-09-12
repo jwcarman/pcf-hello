@@ -29,7 +29,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'mvn cf:push -Dcf.password=$CF_CREDS_PSW'
+                sh 'mvn cf:push -Dcf.username=$CF_CREDS_USR -Dcf.password=$CF_CREDS_PSW'
             }
         }
     }
