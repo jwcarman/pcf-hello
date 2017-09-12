@@ -4,6 +4,9 @@ pipeline {
         maven 'Maven 3.5.x'
         jdk 'JDK8'
     }
+    environment {
+        CF_CREDS     = credentials('686765c5-0546-4864-a071-4ec44c1493dc')
+    }
     stages {
         stage ('Initialize') {
             steps {
@@ -26,7 +29,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                pushToCloudFoundry cloudSpace: 'development', credentialsId: '686765c5-0546-4864-a071-4ec44c1493dc', organization: 'microbule', target: 'https://api.run.pivotal.io'
+                sh 'mvn cf:push -Dcf.password=$CF_CREDS_PSW'
             }
         }
     }

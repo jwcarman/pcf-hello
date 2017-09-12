@@ -1,7 +1,0 @@
-applications:
-- name: pcf-hello
-  memory: 1024M
-  instances: 1
-  buildpack: java_buildpack
-  domain: cfapps.io
-  path: target/pcf-hello*.jar
