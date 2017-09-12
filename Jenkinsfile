@@ -5,7 +5,7 @@ pipeline {
         jdk 'JDK8'
     }
     environment {
-        CF_CREDS     = credentials('686765c5-0546-4864-a071-4ec44c1493dc')
+        CF_CREDS     = credentials('pcf')
     }
     stages {
         stage ('Initialize') {
