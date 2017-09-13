@@ -48,7 +48,9 @@
                     <memory>1024</memory>
                     <instances>1</instances>
                     <services>
-                        <service>service-registry</service>
+                        <service>
+                            <name>service-registry</name>
+                        </service>
                     </services>
                 </configuration>
             </plugin>
