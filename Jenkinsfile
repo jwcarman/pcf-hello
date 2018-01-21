@@ -1,6 +1,8 @@
 node {
     stage('Build') {
 
+        checkout scm
+
         withMaven(jdk: 'JDK8', maven: 'Maven 3.5.x') {
             def branchName = env.BRANCH_NAME
             echo "Building branch ${branchName}..."
