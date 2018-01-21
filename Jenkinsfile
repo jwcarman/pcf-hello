@@ -10,8 +10,13 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo "${env.BRANCH_NAME}, falling back to the master branch build if there are no builds"
-                sh 'mvn clean install'
+                def branchName = env.BRANCH_NAME
+                if (branchName.equals("master")) {
+                    sh "mvn clean install -Drevision=1.0.0-SNAPSHOT"
+                } else if (branchName.startsWith("releases/")) {
+                    def releaseName = branchName.substring(branchName.indexOf("/") + 1)
+                    sh "mvn clean install -Drevision=${releaseName}.${env.BUILD_NUMBER}"
+                }
             }
             post {
                 always {
