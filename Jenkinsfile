@@ -1,10 +1,4 @@
 node {
-
-    tools {
-        maven 'Maven 3.5.x'
-        jdk 'JDK8'
-    }
-
     stage('Build') {
         withMaven(maven: 'Maven 3.5.x', jdk: 'JDK8') {
             def branchName = env.BRANCH_NAME
