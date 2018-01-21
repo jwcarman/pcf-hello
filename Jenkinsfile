@@ -8,28 +8,15 @@ pipeline {
         CF_CREDS = credentials('pcf')
     }
     stages {
-        stage('Initialize') {
-            steps {
-                sh '''
-                    mvn -v
-                '''
-            }
-        }
-
         stage('Build') {
             steps {
+                echo "${env.BRANCH_NAME}, falling back to the master branch build if there are no builds"
                 sh 'mvn clean install'
             }
             post {
                 always {
                     junit '**/target/surefire-reports/**/*.xml'
                 }
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                sh 'mvn cf:push -Dcf.username=$CF_CREDS_USR -Dcf.password=$CF_CREDS_PSW'
             }
         }
     }
