@@ -9,13 +9,13 @@
 
     <groupId>pcf-hello</groupId>
     <artifactId>pcf-hello</artifactId>
-    <version>1.0.8-SNAPSHOT</version>
+    <version>1.0.8</version>
 
     <scm>
         <connection>scm:git:git@github.com:jwcarman/pcf-hello.git</connection>
         <developerConnection>scm:git:git@github.com:jwcarman/pcf-hello.git</developerConnection>
         <url>git://github.com/jwcarman/pcf-hello.git</url>
-      <tag>HEAD</tag>
+      <tag>pcf-hello-1.0.8</tag>
   </scm>
 
     <properties>
