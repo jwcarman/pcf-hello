@@ -11,6 +11,8 @@ node {
                     if ("master".equals(branchName)) {
                         sh "mvn clean jacoco:prepare-agent test sonar:sonar deploy -DdeployAtEnd=true"
                     } else if (branchName.startsWith("releases/")) {
+                        sh 'git config --global user.email "jenkins@carmanconsulting.com"'
+                        sh 'git config --global user.name "Jenkins"'
                         def pom = readMavenPom file: 'pom.xml'
                         def currentVersion = pom.version
                         def releaseVersion = currentVersion.replace("-SNAPSHOT", "")
