@@ -14,11 +14,11 @@ node {
                         def pom = readMavenPom file: 'pom.xml'
                         def currentVersion = pom.version
                         def releaseVersion = currentVersion.replace("-SNAPSHOT", "")
-                        def lastDotIndex = releaseVersion.lastIndexOf(".")
-                        def releaseRoot = releaseVersion.substring(0, lastDotIndex);
+                        def lastDotIndex = releaseVersion.lastIndexOf('.')
+                        def releaseRoot = releaseVersion.substring(0, lastDotIndex)
                         def lastDigit = Integer.parseInt(releaseVersion.substring(lastDotIndex + 1))
                         def devVersion= releaseRoot + "." + (lastDigit + 1) + "-SNAPSHOT"
-                        echo "Releaseing ${releaseVersion} with development version ${devVersion}..."
+                        echo "Releasing ${releaseVersion} with development version ${devVersion}..."
                         //sh "mvn clean jacoco:prepare-agent test sonar:sonar  release:prepare release:perform \"-DreleaseVersion=${releaseVersion} -DdevelopmentVersion=${devVersion} -DdeployAtEnd\""
                     }
 
