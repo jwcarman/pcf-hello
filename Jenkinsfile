@@ -19,7 +19,7 @@ node {
                         def lastDigit = Integer.parseInt(releaseVersion.substring(lastDotIndex + 1))
                         def devVersion= releaseRoot + "." + (lastDigit + 1) + "-SNAPSHOT"
                         echo "Releasing ${releaseVersion} with development version ${devVersion}..."
-                        sh "mvn clean jacoco:prepare-agent test sonar:sonar  release:prepare release:perform \"-DreleaseVersion=${releaseVersion} -DdevelopmentVersion=${devVersion} -DdeployAtEnd=true\""
+                        sh "mvn clean jacoco:prepare-agent test sonar:sonar  release:prepare release:perform -DdeployAtEnd=true -DreleaseVersion=${releaseVersion} -DdevelopmentVersion=${devVersion}"
                     }
 
                 }
