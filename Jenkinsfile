@@ -21,7 +21,7 @@ node {
                         def lastDigit = Integer.parseInt(releaseVersion.substring(lastDotIndex + 1))
                         def devVersion= releaseRoot + "." + (lastDigit + 1) + "-SNAPSHOT"
                         echo "Releasing ${releaseVersion} with development version ${devVersion}..."
-                        sh "mvn release:clean release:prepare release:perform -DdeployAtEnd=true -DautoVersionSubmodules=true -DreleaseVersion=${releaseVersion} -DdevelopmentVersion=${devVersion}"
+                        sh "mvn release:clean release:prepare release:perform -DdeployAtEnd=true -Dresume=false -DautoVersionSubmodules=true -DreleaseVersion=${releaseVersion} -DdevelopmentVersion=${devVersion}"
                     }
 
                 }

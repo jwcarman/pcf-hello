@@ -10,7 +10,7 @@
 
     <groupId>pcf-hello</groupId>
     <artifactId>pcf-hello</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.2-SNAPSHOT</version>
 
     <scm>
         <connection>scm:git:git@github.com:jwcarman/pcf-hello.git</connection>
