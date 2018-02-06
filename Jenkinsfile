@@ -12,7 +12,7 @@ node {
                         sh "mvn clean jacoco:prepare-agent test sonar:sonar deploy -DdeployAtEnd=true"
                     } else if (branchName.startsWith("releases/")) {
                         def releaseName = branchName.substring(branchName.indexOf("/") + 1)
-                        sh "mvn clean versions:set versions:commit scm:commit jacoco:prepare-agent test sonar:sonar install scm:push deploy \"-DnewVersion=${releaseName}.${env.BUILD_NUMBER} -DdeployAtEnd\""
+                        sh "mvn clean versions:set jacoco:prepare-agent test sonar:sonar verify versions:commit scm:checkin deploy \"-DnewVersion=${releaseName}.${env.BUILD_NUMBER} -DdeployAtEnd\""
                     }
 
                 }
