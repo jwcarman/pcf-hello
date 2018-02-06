@@ -10,7 +10,7 @@
 
     <groupId>pcf-hello</groupId>
     <artifactId>pcf-hello</artifactId>
-    <version>${revision}</version>
+    <version>1.0.0-SNAPSHOT</version>
 
 
     <properties>
@@ -19,7 +19,13 @@
         <spring.cloud.version>Dalston.SR3</spring.cloud.version>
         <spring.cloud.services.version>1.5.0.RELEASE</spring.cloud.services.version>
 
-        <revision>1.1.0-SNAPSHOT</revision>
+
+        <failsafe.plugin.version>2.20.1</failsafe.plugin.version>
+        <jacoco.plugin.version>0.8.0</jacoco.plugin.version>
+
+        <jacoco.out.path>${session.executionRootDirectory}/target</jacoco.out.path>
+        <jacoco.out.file>jacoco-it.exec</jacoco.out.file>
+        <sonar.jacoco.itReportPath>${env.WORKSPACE}/target/${jacoco.out.file}</sonar.jacoco.itReportPath>
     </properties>
 
 
@@ -37,6 +43,46 @@
                 <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
                 <version>3.4.0.905</version>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>prepare-agent-integration</id>
+                        <goals>
+                            <goal>prepare-agent-integration</goal>
+                        </goals>
+                        <configuration>
+                            <destFile>${jacoco.out.path}/${jacoco.out.file}</destFile>
+                            <propertyName>jacoco.agent.arg</propertyName>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${failsafe.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>verify</id>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                        <configuration>
+                            <argLine>${jacoco.agent.arg}</argLine>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
