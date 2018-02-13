@@ -128,12 +128,12 @@
         <repository>
             <id>nexus-releases</id>
             <name>Nexus Releases Repository</name>
-            <url>http://carman-perry.dyndns.org:8081/repository/maven-releases/</url>
+            <url>http://192.168.1.68:8081/repository/maven-releases/</url>
         </repository>
         <snapshotRepository>
             <id>nexus-snapshots</id>
             <name>Nexus Snapshots Repository</name>
-            <url>http://carman-perry.dyndns.org:8081/repository/maven-snapshots/</url>
+            <url>http://192.168.1.68:8081/repository/maven-snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 </project>
